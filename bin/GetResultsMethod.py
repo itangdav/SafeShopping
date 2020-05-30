@@ -5,7 +5,7 @@ from math import radians, cos, sin, asin, sqrt
 import geocoder
 
 # Global Variables Set To Defaults
-API_KEY = "AIzaSyA_ImrLH1Y2ZNYQ9HY-ZvqPNGsKihyJGw4"
+API_KEY = "AIzaSyD2c7P_IihiITITslXAk-wWy9z067xjFQU"
 WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 
@@ -58,47 +58,47 @@ def getResults(LAT, LONG, RADIUS, WEIGHT_DISTANCE, WEIGHT_POPULARITY):
     DAY_OF_WEEK = WEEKDAYS[datetime.today().weekday()]
     HOUR_OF_DAY = int(NOW.strftime("%H"))
 
-    # Gets set of nearby stores
-    # nearby_store_data = populartimes.get(API_KEY, ["grocery_or_supermarket"], (LAT - RADIUS, LONG - RADIUS),
-    #                                      (LAT + RADIUS, LONG + RADIUS)) #TODO be able to change that array ["grocery_or_supermarket"] by adding more types
-    #
-    # Place_IDs = []
-    #
-    # for place in nearby_store_data:
-    #     Place_IDs.append(place['id'])
+    #Gets set of nearby stores
+    nearby_store_data = populartimes.get(API_KEY, ["grocery_or_supermarket"], (LAT - RADIUS, LONG - RADIUS),
+                                         (LAT + RADIUS, LONG + RADIUS)) #TODO be able to change that array ["grocery_or_supermarket"] by adding more types
+
+    Place_IDs = []
+
+    for place in nearby_store_data:
+        Place_IDs.append(place['id'])
 
     processed_data = []
 
-    # for curr_id in Place_IDs:
-    #
-    #     store_data = populartimes.get_populartimes(API_KEY, curr_id)
-    #     if 'populartimes' in store_data:
-    #         if 'current_popularity' in store_data:
-    #             isClosed = store_data['current_popularity'] == "0"
-    #             if not isClosed:
-    #                 processed_data.append(
-    #                     store(store_data['name'], store_data['address'], store_data['coordinates']['lat'],
-    #                           store_data['coordinates']['lng'],
-    #                           store_data['id'], store_data['current_popularity'], 0, WEIGHT_DISTANCE, WEIGHT_POPULARITY, LAT, LONG))
-    #         else:
-    #             for date in store_data['populartimes']:
-    #                 if date['name'] == DAY_OF_WEEK:
-    #                     isClosed = str(date['data'][HOUR_OF_DAY]) == "0"
-    #                     if not isClosed:
-    #                         processed_data.append(
-    #                             store(store_data['name'], store_data['address'], store_data['coordinates']['lat'],
-    #                                   store_data['coordinates']['lng'],
-    #                                   store_data['id'], str(int(date['data'][HOUR_OF_DAY])), 0, WEIGHT_DISTANCE, WEIGHT_POPULARITY, LAT, LONG))
-    #                         break
-    #                     else:
-    #                         break
+    for curr_id in Place_IDs:
 
-    fake_store_tester_data_1 = store("Metro", '735 College St, Toronto, ON M6G 1C5, Canada', 43.6541827, -79.4194143,
-                                     'ChIJ7fBhKPE0K4gRLDLhCYYsWVk', "3", 0, WEIGHT_DISTANCE, WEIGHT_POPULARITY, LAT, LONG)
-    fake_store_tester_data_2 = store("Metro2", '123 Somewhere St, Toronto, ON M6G 1C5, Canada', 43.0541827, -78.4194143,
-                                     'FakeID', "10", 0, WEIGHT_DISTANCE, WEIGHT_POPULARITY, LAT, LONG)
-    processed_data.append(fake_store_tester_data_1)
-    processed_data.append(fake_store_tester_data_2)
+        store_data = populartimes.get_populartimes(API_KEY, curr_id)
+        if 'populartimes' in store_data:
+            if 'current_popularity' in store_data:
+                isClosed = store_data['current_popularity'] == "0"
+                if not isClosed:
+                    processed_data.append(
+                        store(store_data['name'], store_data['address'], store_data['coordinates']['lat'],
+                              store_data['coordinates']['lng'],
+                              store_data['id'], store_data['current_popularity'], 0, WEIGHT_DISTANCE, WEIGHT_POPULARITY, LAT, LONG))
+            else:
+                for date in store_data['populartimes']:
+                    if date['name'] == DAY_OF_WEEK:
+                        isClosed = str(date['data'][HOUR_OF_DAY]) == "0"
+                        if not isClosed:
+                            processed_data.append(
+                                store(store_data['name'], store_data['address'], store_data['coordinates']['lat'],
+                                      store_data['coordinates']['lng'],
+                                      store_data['id'], str(int(date['data'][HOUR_OF_DAY])), 0, WEIGHT_DISTANCE, WEIGHT_POPULARITY, LAT, LONG))
+                            break
+                        else:
+                            break
+
+    # fake_store_tester_data_1 = store("Metro", '735 College St, Toronto, ON M6G 1C5, Canada', 43.6541827, -79.4194143,
+    #                                  'ChIJ7fBhKPE0K4gRLDLhCYYsWVk', "3", 0, WEIGHT_DISTANCE, WEIGHT_POPULARITY, LAT, LONG)
+    # fake_store_tester_data_2 = store("Metro2", '123 Somewhere St, Toronto, ON M6G 1C5, Canada', 43.0541827, -78.4194143,
+    #                                  'FakeID', "10", 0, WEIGHT_DISTANCE, WEIGHT_POPULARITY, LAT, LONG)
+    # processed_data.append(fake_store_tester_data_1)
+    # processed_data.append(fake_store_tester_data_2)
 
     sorted_data_queue = PriorityQueue()
     for curr_store in processed_data:
@@ -138,7 +138,7 @@ def getResults(LAT, LONG, RADIUS, WEIGHT_DISTANCE, WEIGHT_POPULARITY):
 g = geocoder.ip('me')
 lat = g.latlng[0]
 long = g.latlng[1]
-radius = 0.008  # Radius is in latitude or longitude angles
+radius = 0.015  # Radius is in latitude or longitude angles
 weight_distance = 1.0
 weight_popularity = 0.0
 
