@@ -9,10 +9,10 @@ API_KEY = "AIzaSyD2c7P_IihiITITslXAk-wWy9z067xjFQU"
 WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 
-
 # This class defines what a store is
 class store:
-    def __init__(self, name, address, lat, long, store_id, popularity, score, WEIGHT_DISTANCE, WEIGHT_POPULARITY, LAT, LONG):
+    def __init__(self, name, address, lat, long, store_id, popularity, score, WEIGHT_DISTANCE, WEIGHT_POPULARITY, LAT,
+                 LONG):
         self.name = name
         self.address = address
         self.lat = lat
@@ -53,12 +53,12 @@ class store:
 
 
 def getResults(LAT, LONG, RADIUS, WEIGHT_DISTANCE, WEIGHT_POPULARITY, type_of_place):
-    #Get Date
+    # Get Date
     NOW = datetime.now()
     DAY_OF_WEEK = WEEKDAYS[datetime.today().weekday()]
     HOUR_OF_DAY = int(NOW.strftime("%H"))
 
-    #Gets set of nearby stores
+    # Gets set of nearby stores
     nearby_store_data = populartimes.get(API_KEY, type_of_place, (LAT - RADIUS, LONG - RADIUS),
                                          (LAT + RADIUS, LONG + RADIUS))
 
@@ -79,7 +79,8 @@ def getResults(LAT, LONG, RADIUS, WEIGHT_DISTANCE, WEIGHT_POPULARITY, type_of_pl
                     processed_data.append(
                         store(store_data['name'], store_data['address'], store_data['coordinates']['lat'],
                               store_data['coordinates']['lng'],
-                              store_data['id'], store_data['current_popularity'], 0, WEIGHT_DISTANCE, WEIGHT_POPULARITY, LAT, LONG))
+                              store_data['id'], store_data['current_popularity'], 0, WEIGHT_DISTANCE, WEIGHT_POPULARITY,
+                              LAT, LONG))
             else:
                 for date in store_data['populartimes']:
                     if date['name'] == DAY_OF_WEEK:
@@ -88,7 +89,8 @@ def getResults(LAT, LONG, RADIUS, WEIGHT_DISTANCE, WEIGHT_POPULARITY, type_of_pl
                             processed_data.append(
                                 store(store_data['name'], store_data['address'], store_data['coordinates']['lat'],
                                       store_data['coordinates']['lng'],
-                                      store_data['id'], str(int(date['data'][HOUR_OF_DAY])), 0, WEIGHT_DISTANCE, WEIGHT_POPULARITY, LAT, LONG))
+                                      store_data['id'], str(int(date['data'][HOUR_OF_DAY])), 0, WEIGHT_DISTANCE,
+                                      WEIGHT_POPULARITY, LAT, LONG))
                             break
                         else:
                             break
@@ -128,7 +130,6 @@ def getResults(LAT, LONG, RADIUS, WEIGHT_DISTANCE, WEIGHT_POPULARITY, type_of_pl
         }
         sorted_data_dictionary_form.append(curr_dict)
 
-
     return sorted_data_dictionary_form
 
 
@@ -136,8 +137,9 @@ def getResults(LAT, LONG, RADIUS, WEIGHT_DISTANCE, WEIGHT_POPULARITY, type_of_pl
 g = geocoder.ip('me')
 lat = g.latlng[0]
 long = g.latlng[1]
-radius = 0.015  # Radius is in latitude or longitude angles
+radius = 0.016  # Radius is in latitude or longitude angles
 weight_distance = 5.0
 weight_popularity = 1.0
+type_of_place = ['grocery_or_supermarket']
 
-
+#print(getResults(lat, long, radius, weight_distance, weight_popularity, type_of_place))
