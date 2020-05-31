@@ -1,22 +1,32 @@
-/*
-let typearray=["supermarkets_and_groceries", "churches", "cafes"];
-let type = "supermarkets_and_groceries";
-function changeType(randomstring){
-    console.log('ok');
-    type = randomstring;
+let typearray = [
+    ['supermarket', 'Supermarkets'],
+    ['doctor', 'Clinics'],
+    ['drugstore','Drugstore'],
+    ['pharmacy', 'Pharmacy'],
+    ['park', 'Parks'],
+    ['bank', 'Banks'],
+    ['convenience_store', 'Convenience Stores'],
+    ['shopping_mall', 'Shopping Malls'],
+    ['library', 'Libraries'],
+    ['restaurant', 'Restaurants'],
+    ['cafe', 'Cafes'],
+    ['church', 'Churches'],    
+];
+  let type = "supermarkets_and_groceries";
+  function changeType(event) {
+    type = event.target.getAttribute("type");
     console.log(type);
-}
+  }
 
-let str = '<div class="topnav">';
-for(let count = 0; count < typearray.length; count++){
-    str = str + 
-    '<button onclick ="changeType("'+typearray[count]+'")" title = " '+ typearray[count] + '">' +typearray[count] +'</button>';
-}
-str = str + '</div>' +
-'</div>';
-console.log(str);
+  let navHtml = document.createElement('div');
+  navHtml.setAttribute('class', 'topnav');
 
-document.getElementById('navbar').innerHTML = str;
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>*/
+  for (let count = 0; count < typearray.length; count++) {
+    let btn = document.createElement("button");
+    btn.setAttribute("type", typearray[count][0]);
+    btn.setAttribute("title", typearray[count][1]);
+    btn.innerText = typearray[count][1];
+    btn.addEventListener("click", changeType);
+    navHtml.appendChild(btn);
+  }
+  document.getElementById("navbar").appendChild(navHtml);

@@ -6,7 +6,8 @@
     <meta name="viewport" content="initial-scale=1">
     <meta charset="utf-8">
     <style>
-    body{
+    
+    body {
       background-color: #42455a;
     }
     
@@ -17,7 +18,7 @@
         height: 75%;
         width: 75%;
         margin: auto;
-        top: 50%;
+        top: 35%;
         transform: translateY(-45%);
       }
       html, body {
@@ -28,14 +29,23 @@
     </style>
   </head>
   <body>
-    <!-- menu elements-->
+    <!-- static menu elements-->
     <div class="container">
       <div class="menu">
         <ul>
-          <li class="logo"><img src="pointer.png"></li>
-          <li>Supermarkets and Groceries</li>
-          <li>Churches</li>
+          <li class="logo"><img src="cpu-pointer.svg"></li>
+          <li>Supermarkets</li>
+          <li>Clinics</li>
+          <li>Drugstores</li>
+          <li>Pharmacies</li>
+          <li>Parks</li>
+          <li>Banks</li>
+          <li>Convenience Stores</li>
+          <li>Shopping Malls</li>
+          <li>Libraries</li>
+          <li>Restaurants</li>
           <li>Cafes</li>
+          <li>Churches</li>
         </ul>
       </div>
     </div>
@@ -43,16 +53,20 @@
     <!-- this implements the navbar-->
     <div id="navbar"></div>
     <script type = "module" src = navbar.js></script>
-    <script type = "module" src = changeType.js></script>
-    <!-- this implements the list-->
-    <div id="list"></div>
-    <script type = "module" src = rankedstores.js></script>
+    <!-- input tag-->
+    <input id="searchbar" onkeyup="" type="text" name="searchbar.js" placeholder="Search...">
     <!-- this implements the map-->
     <div id="map"></div>
     <script src = index.js> </script>
-    <div id="searchbar"></div>
-    <script type = "module" src = searchbar.js></script>
+    <!-- this implements the list-->
+    <div id="list"></div>
+    <script type = "module" src = rankedstores.js></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2c7P_IihiITITslXAk-wWy9z067xjFQU
     &callback=initMap"></script>
+    
+    
+    <div id="searchbar"></div>
+    <script type = "module" src = searchbar.js></script>
+    
   </body>
 </html>
