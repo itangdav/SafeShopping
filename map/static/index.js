@@ -14,12 +14,23 @@ function initMap() {
     let infowindow =  new google.maps.InfoWindow({});
     let marker, count;
     for (count = 0; count < locations.length; count++) {
+        let score = parseInt(locations[count][3]/110*255);
+        //determines the colour of the marker;
+        let str = '';
+        if(score <= 127){
+            str += 'FF' + Number(2*score).toString(16);
+            if(str.length < 4)str = str + '0';
+        }else{
+            str += Number(2*score-255).toString(16) + 'FF';
+            if(str.length < 4)str = '0' + str;
+        }
+        str = str + '00';
         //creates a marker at the specified location
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(locations[count][1], locations[count][2]),
           map: map,
           //the first hex code determines the colour of the icon.
-          icon:'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|FFFFFF|000000',
+          icon:'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|' + str +'|000000',
           title: locations[count][0],
         });
         //this string sets up the pop up box when you click on the icon

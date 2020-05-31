@@ -3,7 +3,9 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 
+
 from bin import GetResultsMethod
+from bin import getids
 import geocoder
 
 
@@ -14,14 +16,19 @@ def home(request):
     radius = 0.015  # Radius is in latitude or longitude angles
     weight_distance = 5.0
     weight_popularity = 1.0
-
     type_of_place = ['grocery_or_supermarket']
+    address = request.POST['address']
+
+    cords = getids.getLocation(address)
+    lat = cords[0]
+    long = cords[1]
 
     data = GetResultsMethod.getResults(lat, long, radius, weight_distance, weight_popularity, type_of_place)
-    dataf = data[0]
 
-    #print(data)
+    #for x in data:
+        #print(x)
 
-    # , 'lat': data["lat"], 'long': data["long"], 'score': data["score"]
 
-    return render(request, 'map/index.html', dataf)
+
+
+    return render(request, 'map/index.html')

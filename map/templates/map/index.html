@@ -34,7 +34,7 @@
     <div class="container">
       <div class="menu">
         <ul>
-          <li class="logo"><img src="../../../pointer.svg"></li>
+          <li class="logo"><img src="../../../pointer.png"></li>
           <li>Supermarkets</li>
           <li>Clinics</li>
           <li>Drugstores</li>
@@ -56,7 +56,16 @@
     <div id="navbar"></div>
     <script type = "module" src = ../../static/navbar.js></script>
     <!-- input tag-->
-    <input id="searchbar" onkeyup="" type="text" name="searchbar.js" placeholder="Search...">
+
+
+    <form method="post">
+        {% csrf_token %}
+        <input id="address" type="text" name="address">
+        <input type="submit" style="display: none" />
+
+    </form>
+
+
     <!-- this implements the map-->
     <div id="map"></div>
     <script src = ../../static/index.js> </script>
@@ -67,8 +76,7 @@
     &callback=initMap"></script>
     
     
-    <div id="searchbar"></div>
-    <script type = "module" src = searchbar.js></script>
+
     
   </body>
 </html>
