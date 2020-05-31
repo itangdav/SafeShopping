@@ -1,6 +1,5 @@
 import locations from './getlocation.js';
 console.log((locations));
-//starting css parts of the list.
 let liststring = '<nav>' + 
 '<ul>';
 

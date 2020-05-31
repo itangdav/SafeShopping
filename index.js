@@ -1,11 +1,15 @@
-import locations from './getlocation.js';
-//manually set as my location right now.
+let locations = [
+    ['Metro', 43.666709, -79.404155, 100],
+    ['Whole Foods', 43.672023, -79.394915, 0]
+];
 let curlat = 43.667665, curlong = -79.399636;
 let center = {lat: curlat, lng: curlong};
-
+let map;
+console.log('ok');
 function initMap() {
+    console.log('ok');
     //sets up the map
-    let map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
         center: center,
         zoom: 14
     });
