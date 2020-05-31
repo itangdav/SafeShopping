@@ -18,9 +18,10 @@ def home(request):
     type_of_place = ['grocery_or_supermarket']
 
     data = GetResultsMethod.getResults(lat, long, radius, weight_distance, weight_popularity, type_of_place)
+    dataf = data[0]
 
     #print(data)
 
     # , 'lat': data["lat"], 'long': data["long"], 'score': data["score"]
 
-    return render(request, 'map/index.html', data)
+    return render(request, 'map/index.html', dataf)
