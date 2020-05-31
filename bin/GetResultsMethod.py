@@ -52,15 +52,15 @@ class store:
         return (c * r)
 
 
-def getResults(LAT, LONG, RADIUS, WEIGHT_DISTANCE, WEIGHT_POPULARITY):
+def getResults(LAT, LONG, RADIUS, WEIGHT_DISTANCE, WEIGHT_POPULARITY, type_of_place):
     #Get Date
     NOW = datetime.now()
     DAY_OF_WEEK = WEEKDAYS[datetime.today().weekday()]
     HOUR_OF_DAY = int(NOW.strftime("%H"))
 
     #Gets set of nearby stores
-    nearby_store_data = populartimes.get(API_KEY, ["grocery_or_supermarket"], (LAT - RADIUS, LONG - RADIUS),
-                                         (LAT + RADIUS, LONG + RADIUS)) #TODO be able to change that array ["grocery_or_supermarket"] by adding more types
+    nearby_store_data = populartimes.get(API_KEY, type_of_place, (LAT - RADIUS, LONG - RADIUS),
+                                         (LAT + RADIUS, LONG + RADIUS))
 
     Place_IDs = []
 
@@ -128,8 +128,6 @@ def getResults(LAT, LONG, RADIUS, WEIGHT_DISTANCE, WEIGHT_POPULARITY):
         }
         sorted_data_dictionary_form.append(curr_dict)
 
-    for i in sorted_data_dictionary_form:
-        print(i)
 
     return sorted_data_dictionary_form
 
@@ -142,5 +140,4 @@ radius = 0.015  # Radius is in latitude or longitude angles
 weight_distance = 5.0
 weight_popularity = 1.0
 
-print(getResults(lat, long, radius, weight_distance, weight_popularity))
 

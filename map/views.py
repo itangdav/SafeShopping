@@ -20,11 +20,25 @@ import geocoder
 # GetResultsMethod.getResults(lat, long, radius, weight_distance, weight_popularity)
 
 def home(request):
+    g = geocoder.ip('me')
+    lat = g.latlng[0]
+    long = g.latlng[1]
+    radius = 0.015  # Radius is in latitude or longitude angles
+    weight_distance = 5.0
+    weight_popularity = 1.0
+
+    type_of_place = ['grocery_or_supermarket']
+
+    data = GetResultsMethod.getResults(lat, long, radius, weight_distance, weight_popularity)
+
+    print(data)
+
     return render(request, 'map/home.html')
 
 def addressPost(request):
     if request.method == 'POST':
         if request.POST.get('address'):
+            print('TODO')
 
 
 
