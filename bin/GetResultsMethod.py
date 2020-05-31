@@ -139,8 +139,8 @@ g = geocoder.ip('me')
 lat = g.latlng[0]
 long = g.latlng[1]
 radius = 0.015  # Radius is in latitude or longitude angles
-weight_distance = 1.0
-weight_popularity = 0.0
+weight_distance = 5.0
+weight_popularity = 1.0
 
 print(getResults(lat, long, radius, weight_distance, weight_popularity))
 
