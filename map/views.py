@@ -1,17 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .models import Post
+
 
 from bin import GetResultsMethod
 import geocoder
 
 
 def home(request):
-    return render(request, 'map/home.html')
-
-
-def getResults(request):
     g = geocoder.ip('me')
     lat = g.latlng[0]
     long = g.latlng[1]
@@ -23,10 +19,8 @@ def getResults(request):
 
     data = GetResultsMethod.getResults(lat, long, radius, weight_distance, weight_popularity, type_of_place)
 
-    return HttpResponse(data)
+    #print(data)
 
+    # , 'lat': data["lat"], 'long': data["long"], 'score': data["score"]
 
-def addressPost(request):
-    if request.method == 'POST':
-        if request.POST.get('address'):
-            temp = 'todo'
+    return render(request, 'map/index.html', data)

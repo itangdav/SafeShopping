@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <link rel="stylesheet" href="../../static/style.css">
+    <meta name="viewport" content="initial-scale=1">
+    <meta charset="utf-8">
+    <style>
+    
+    body {
+      background-color: #42455a;
+    }
+    
+    /*the stuff here is copy pasted from the google api website and everything's in random places
+    but they're all just to test the individual js files. I don't know what these actually do.*/
+      #map {
+        position: relative;
+        height: 75%;
+        width: 75%;
+        margin: auto;
+        top: 35%;
+        transform: translateY(-45%);
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- static menu elements-->
+    <ul>{% for key, value in dataf %}
+    {{ value }}
+{% endfor %}</ul>
+    <div class="container">
+      <div class="menu">
+        <ul>
+          <li class="logo"><img src="../../../pointer.svg"></li>
+          <li>Supermarkets</li>
+          <li>Clinics</li>
+          <li>Drugstores</li>
+          <li>Pharmacies</li>
+          <li>Parks</li>
+          <li>Banks</li>
+          <li>Convenience Stores</li>
+          <li>Shopping Malls</li>
+          <li>Libraries</li>
+          <li>Restaurants</li>
+          <li>Cafes</li>
+          <li>Churches</li>
+
+        </ul>
+      </div>
+    </div>
+    <script> src = getlocation.js></script>
+    <!-- this implements the navbar-->
+    <div id="navbar"></div>
+    <script type = "module" src = ../../static/navbar.js></script>
+    <!-- input tag-->
+    <input id="searchbar" onkeyup="" type="text" name="searchbar.js" placeholder="Search...">
+    <!-- this implements the map-->
+    <div id="map"></div>
+    <script src = ../../static/index.js> </script>
+    <!-- this implements the list-->
+    <div id="list"></div>
+    <script type = "module" src = ../../static/rankedstores.js></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2c7P_IihiITITslXAk-wWy9z067xjFQU
+    &callback=initMap"></script>
+    
+    
+    <div id="searchbar"></div>
+    <script type = "module" src = searchbar.js></script>
+    
+  </body>
+</html>
