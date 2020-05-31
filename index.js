@@ -18,10 +18,10 @@ function initMap() {
     for (count = 0; count < locations.length; count++) {
         //creates a marker at the specified location
         marker = new google.maps.Marker({
-          position: new google.maps.LatLng(locations[count][1], locations[count][2]),
+            position: new google.maps.LatLng(locations[count][1], locations[count][2]),
           map: map,
           //the first hex code determines the colour of the icon.
-          icon:'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|FFFFFF|000000',
+          icon:'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|FFC0CB|000000',
           title: locations[count][0],
         });
         //this string sets up the pop up box when you click on the icon

@@ -1,4 +1,4 @@
-import locations from './getlocation.js';
+import {locations} from './getlocation.js';
 console.log((locations));
 let liststring = '<nav>' + 
 '<ul>';
