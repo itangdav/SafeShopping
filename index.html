@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Simple Map</title>
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="initial-scale=1">
     <meta charset="utf-8">
     <style>
@@ -27,6 +28,22 @@
     </style>
   </head>
   <body>
+    <!-- menu elements-->
+    <div class="container">
+      <div class="menu">
+        <ul>
+          <li class="logo"><img src="pointer.png"></li>
+          <li>Supermarkets and Groceries</li>
+          <li>Churches</li>
+          <li>Cafes</li>
+        </ul>
+      </div>
+    </div>
+    <script> src = getlocation.js></script>
+    <!-- this implements the navbar-->
+    <div id="navbar"></div>
+    <script type = "module" src = navbar.js></script>
+    <script type = "module" src = changeType.js></script>
     <!-- this implements the list-->
     <div id="list"></div>
     <script type = "module" src = rankedstores.js></script>
