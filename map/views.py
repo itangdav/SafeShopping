@@ -25,10 +25,16 @@ def home(request):
 
     data = GetResultsMethod.getResults(lat, long, radius, weight_distance, weight_popularity, type_of_place)
 
-    #for x in data:
-        #print(x)
+    names = []
+    lats = []
+    longs = []
+    scores = []
+    for x in data:
+        names.append(x["name"])
+        lats.append(x["lat"])
+        longs.append(x["long"])
+        scores.append(x["score"])
 
+    print(data)
 
-
-
-    return render(request, 'map/index.html')
+    return render(request, 'map/index.html', {'lats': lats, "longs": longs, 'names': names, 'scores': scores})
