@@ -1,15 +1,15 @@
 
 
 var names = document.getElementById("names").value;
-var lats = parseFloat(document.getElementById("lats").value);
-var longs = parseFloat(document.getElementById("longs").value);
-var scores = parseInt(document.getElementById("scores").value);
+var lats = document.getElementById("lats").value;
+var longs = document.getElementById("longs").value;
+var scores = document.getElementById("scores").value;
 var lat = document.getElementById("lat").value;
 var longi = document.getElementById("longi").value;
 
 let locations = new Array(names.length);
 for(let num = 0; num < names.length; num++){
-    locations[num] = [names[num], lats[num], longs[num], scores[num]];
+    locations[num] = [names[num], parseFloat(lats[num]), parseFloat(longs[num]), parseInt(scores[num])];
 }
 let curlat = lat, curlong = longi;
 let center = {lat: curlat, lng: curlong};
