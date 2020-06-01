@@ -1,19 +1,17 @@
 
 
 var names = document.getElementById("names").value;
-var lats = document.getElementById("lats").value;
-var longs = document.getElementById("longs").value;
-var scores = document.getElementById("scores").value;
+var lats = parseFloat(document.getElementById("lats").value);
+var longs = parseFloat(document.getElementById("longs").value);
+var scores = parseInt(document.getElementById("scores").value);
 var lat = document.getElementById("lat").value;
 var longi = document.getElementById("longi").value;
 
-
-
 let locations = new Array(names.length);
-for(let count = 0; count < names.length; count++){
-    locations[count] = [names[count], lats[count], longs[count], scores[count]];
+for(let num = 0; num < names.length; num++){
+    locations[num] = [names[num], lats[num], longs[num], scores[num]];
 }
-let curlat = parseFloat(lat), curlong = parseFloat(longi);
+let curlat = lat, curlong = longi;
 let center = {lat: curlat, lng: curlong};
 console.log(center)
 console.log(names)
@@ -46,11 +44,19 @@ function initMap() {
         //creates a marker at the specified location
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(locations[count][1], locations[count][2]),
+
+            
           map: map,
           //the first hex code determines the colour of the icon.
           icon:'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|' + str +'|000000',
           title: locations[count][0],
         });
+        //console.log(locations[count][2])
+        //console.log(locations[count][1])
+        console.log(lat)
+        console.log(lats)
+
+
         //this string sets up the pop up box when you click on the icon
         let contentString = '<div id="content">'+
         '<div id="siteNotice">'+
