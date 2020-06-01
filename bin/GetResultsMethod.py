@@ -5,7 +5,7 @@ from math import radians, cos, sin, asin, sqrt
 import geocoder
 
 # Global Variables Set To Defaults
-API_KEY = "AIzaSyD1K9pwhTtcTS7yidUdNRSHfTxT-0AsK8c"
+API_KEY = "YOUR_GOOGLE_MAPS_API_KEY"
 WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 
