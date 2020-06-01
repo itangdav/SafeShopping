@@ -5,7 +5,7 @@ from math import radians, cos, sin, asin, sqrt
 import geocoder
 
 # Global Variables Set To Defaults
-API_KEY = "AIzaSyD2c7P_IihiITITslXAk-wWy9z067xjFQU"
+API_KEY = "AIzaSyD1K9pwhTtcTS7yidUdNRSHfTxT-0AsK8c"
 WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 

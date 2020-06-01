@@ -34,7 +34,7 @@
     <div class="container">
       <div class="menu">
         <ul>
-          <li class="logo"><img src="../../../pointer.png"></li>
+
           <li>Supermarkets</li>
           <li>Clinics</li>
           <li>Drugstores</li>
@@ -65,14 +65,21 @@
 
     </form>
 
-    <script>
-        var names = {{ names }};
-        var lats = {{ lats }};
-        var longs = {{ longs }};
-        var scores = {{ scores }};
-        var lat = {{ lat }};
-        var long = {{ long }};
-    </script>
+    <input type="hidden" id="names" name="variable" value="{{ names }}">
+    <input type="hidden" id="lats" name="variable1" value="{{ lats }}">
+    <input type="hidden" id="longs" name="variable2" value="{{ longs }}">
+    <input type="hidden" id="scores" name="variable3" value="{{ scores }}">
+    <input type="hidden" id="lat" name="variable4" value="{{ lat }}">
+    <input type="hidden" id="longi" name="variable5" value="{{ longi }}">
+
+
+
+
+
+
+
+
+
 
     <!-- this implements the map-->
     <div id="map"></div>
@@ -80,7 +87,9 @@
     <!-- this implements the list-->
     <div id="list"></div>
     <script type = "module" src = ../../static/rankedstores.js></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2c7P_IihiITITslXAk-wWy9z067xjFQU
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1K9pwhTtcTS7yidUdNRSHfTxT-0AsK8c
+
+
     &callback=initMap"></script>
     
     

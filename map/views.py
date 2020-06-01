@@ -13,11 +13,11 @@ def home(request):
     g = geocoder.ip('me')
     lat = g.latlng[0]
     long = g.latlng[1]
-    radius = 0.015  # Radius is in latitude or longitude angles
+    radius = 0.008  # Radius is in latitude or longitude angles
     weight_distance = 5.0
     weight_popularity = 1.0
     type_of_place = ['grocery_or_supermarket']
-    address = request.POST['address']
+    address = request.POST.get('address')
 
     cords = getids.getLocation(address)
     lat = cords[0]
@@ -31,10 +31,10 @@ def home(request):
     scores = []
     for x in data:
         names.append(x["name"])
-        lats.append(x["lat"])
-        longs.append(x["long"])
-        scores.append(x["score"])
+        lats.append(float(x["lat"]))
+        longs.append(float(x["long"]))
+        scores.append(float(x["score"]))
 
     print(data)
 
-    return render(request, 'map/index.html', {'lats': lats, "longs": longs, 'lat': lat, 'long': long, 'names': names, 'scores': scores})
+    return render(request, 'map/index.html', {'lats': lats, "longs": longs, 'lat': lat, 'longi': long, 'names': names, 'scores': scores})

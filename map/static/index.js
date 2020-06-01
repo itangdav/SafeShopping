@@ -1,9 +1,24 @@
-window.locations = [
-    ['Metro', 43.666709, -79.404155, 100],
-    ['Whole Foods', 43.672023, -79.394915, 0]
-];
-let curlat = 43.667665, curlong = -79.399636;
+
+
+var names = document.getElementById("names").value;
+var lats = document.getElementById("lats").value;
+var longs = document.getElementById("longs").value;
+var scores = document.getElementById("scores").value;
+var lat = document.getElementById("lat").value;
+var longi = document.getElementById("longi").value;
+
+
+
+let locations = new Array(names.length);
+for(let count = 0; count < names.length; count++){
+    locations[count] = [names[count], lats[count], longs[count], scores[count]];
+}
+let curlat = parseFloat(lat), curlong = parseFloat(longi);
 let center = {lat: curlat, lng: curlong};
+console.log(center)
+console.log(names)
+console.log(lats)
+console.log(longs)
 let map;
 function initMap() {
     //sets up the map
@@ -17,11 +32,14 @@ function initMap() {
         let score = parseInt(locations[count][3]/110*255);
         //determines the colour of the marker;
         let str = '';
+        let temp1 = Number(2*score).toString(16), temp2 = Number(2*score-255).toString(16);
+        if(temp1 == 'NaN')temp1 = '00';
+        if(temp2 == 'NaN')temp2 = '00';
         if(score <= 127){
-            str += 'FF' + Number(2*score).toString(16);
+            str += 'FF' + temp1;
             if(str.length < 4)str = str + '0';
         }else{
-            str += Number(2*score-255).toString(16) + 'FF';
+            str += temp2 + 'FF';
             if(str.length < 4)str = '0' + str;
         }
         str = str + '00';
