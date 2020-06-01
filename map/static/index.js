@@ -1,5 +1,3 @@
-
-
 var names = document.getElementById("names").value;
 var lats = document.getElementById("lats").value;
 var longs = document.getElementById("longs").value;
@@ -7,16 +5,16 @@ var scores = document.getElementById("scores").value;
 var lat = document.getElementById("lat").value;
 var longi = document.getElementById("longi").value;
 
-let locations = new Array(names.length);
-for(let num = 0; num < names.length; num++){
+let locations = new Array(lats.length);
+for(let num = 0; num < lats.length; num++){
     locations[num] = [names[num], parseFloat(lats[num]), parseFloat(longs[num]), parseInt(scores[num])];
+    console.log(locations[num])
 }
-let curlat = lat, curlong = longi;
+let curlat = parseFloat(lat), curlong = parseFloat(longi);
 let center = {lat: curlat, lng: curlong};
-console.log(center)
+console.log(locations)
 console.log(names)
-console.log(lats)
-console.log(longs)
+
 let map;
 function initMap() {
     //sets up the map
@@ -51,10 +49,6 @@ function initMap() {
           icon:'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|' + str +'|000000',
           title: locations[count][0],
         });
-        //console.log(locations[count][2])
-        //console.log(locations[count][1])
-        console.log(lat)
-        console.log(lats)
 
 
         //this string sets up the pop up box when you click on the icon

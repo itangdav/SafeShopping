@@ -30,7 +30,7 @@ def home(request):
     longs = []
     scores = []
     for x in data:
-        names.append(x["name"])
+        names.append(str(x["name"]))
         lats.append(float(x["lat"]))
         longs.append(float(x["long"]))
         scores.append(float(x["score"]))
