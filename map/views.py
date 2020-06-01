@@ -37,4 +37,4 @@ def home(request):
 
     print(data)
 
-    return render(request, 'map/index.html', {'lats': lats, "longs": longs, 'names': names, 'scores': scores})
+    return render(request, 'map/index.html', {'lats': lats, "longs": longs, 'lat': lat, 'long': long, 'names': names, 'scores': scores})
