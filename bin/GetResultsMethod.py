@@ -25,7 +25,7 @@ class store:
         self.setSafetyScore(LAT, LONG)
 
     def setSafetyScore(self, LAT, LONG):
-        self.score = self.weight_popularity * self.popularity + self.weight_distance * self.distance(LAT, LONG)
+        self.score = 110-(self.weight_popularity * self.popularity + self.weight_distance * self.distance(LAT, LONG))
 
     def __cmp__(self, other):
         return self.score - other.score
@@ -61,7 +61,6 @@ def getResults(LAT, LONG, RADIUS, WEIGHT_DISTANCE, WEIGHT_POPULARITY, type_of_pl
     # Gets set of nearby stores
     nearby_store_data = populartimes.get(API_KEY, type_of_place, (LAT - RADIUS, LONG - RADIUS),
                                          (LAT + RADIUS, LONG + RADIUS))
-
     Place_IDs = []
 
     for place in nearby_store_data:
@@ -140,6 +139,9 @@ long = g.latlng[1]
 radius = 0.016  # Radius is in latitude or longitude angles
 weight_distance = 5.0
 weight_popularity = 1.0
-type_of_place = ['grocery_or_supermarket']
+type_of_place = ['bar']
 
-#print(getResults(lat, long, radius, weight_distance, weight_popularity, type_of_place))
+
+
+print(getResults(lat, long, radius, weight_distance, weight_popularity, type_of_place))
+
