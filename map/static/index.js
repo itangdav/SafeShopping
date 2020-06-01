@@ -1,19 +1,20 @@
-var names = document.getElementById("names").value;
-var lats = document.getElementById("lats").value;
-var longs = document.getElementById("longs").value;
-var scores = document.getElementById("scores").value;
+
+var names2 = document.getElementById("names").value;
+var names = JSON.parse(names2.replace(/'/g, "\""));
+var lats = JSON.parse(document.getElementById("lats").value);
+var longs = JSON.parse(document.getElementById("longs").value);
+var scores = JSON.parse(document.getElementById("scores").value);
 var lat = document.getElementById("lat").value;
 var longi = document.getElementById("longi").value;
+
 
 let locations = new Array(lats.length);
 for(let num = 0; num < lats.length; num++){
     locations[num] = [names[num], parseFloat(lats[num]), parseFloat(longs[num]), parseInt(scores[num])];
-    console.log(locations[num])
+    //console.log(locations[num])
 }
 let curlat = parseFloat(lat), curlong = parseFloat(longi);
 let center = {lat: curlat, lng: curlong};
-console.log(locations)
-console.log(names)
 
 let map;
 function initMap() {
@@ -43,7 +44,7 @@ function initMap() {
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(locations[count][1], locations[count][2]),
 
-            
+
           map: map,
           //the first hex code determines the colour of the icon.
           icon:'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|' + str +'|000000',
