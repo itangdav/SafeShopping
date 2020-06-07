@@ -5,7 +5,7 @@ from math import radians, cos, sin, asin, sqrt
 import geocoder
 
 # Global Variables Set To Defaults
-API_KEY = "YOUR_GOOGLE_MAPS_API_KEY"
+API_KEY = "AIzaSyABNVooTkE-yezobdd5yypsLp8StVUTZe8"
 WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 
@@ -57,6 +57,9 @@ def getResults(LAT, LONG, RADIUS, WEIGHT_DISTANCE, WEIGHT_POPULARITY, type_of_pl
     NOW = datetime.now()
     DAY_OF_WEEK = WEEKDAYS[datetime.today().weekday()]
     HOUR_OF_DAY = int(NOW.strftime("%H"))
+
+    if not type_of_place:
+        type_of_place = ['grocery_or_supermarket']
 
     # Gets set of nearby stores
     nearby_store_data = populartimes.get(API_KEY, type_of_place, (LAT - RADIUS, LONG - RADIUS),

@@ -1,99 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Simple Map</title>
     <link rel="stylesheet" href="../../static/style.css">
     <meta name="viewport" content="initial-scale=1">
     <meta charset="utf-8">
     <style>
-    
-    body {
-      background-color: #42455a;
-    }
-    
-    /*the stuff here is copy pasted from the google api website and everything's in random places
-    but they're all just to test the individual js files. I don't know what these actually do.*/
-      #map {
-        position: relative;
-        height: 75%;
-        width: 75%;
-        margin: auto;
-        top: 35%;
-        transform: translateY(-45%);
-      }
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+
+        body {
+            background-color: #42455a;
+        }
+
+        /*the stuff here is copy pasted from the google api website and everything's in random places
+        but they're all just to test the individual js files. I don't know what these actually do.*/
+        #map {
+            position: relative;
+            height: 75%;
+            width: 75%;
+            margin: auto;
+            top: 35%;
+            transform: translateY(-45%);
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
     </style>
-  </head>
-  <body>
-    <!-- static menu elements-->
-
-    <div class="container">
-      <div class="menu">
-        <ul>
-
-          <li>Supermarkets</li>
-          <li>Clinics</li>
-          <li>Drugstores</li>
-          <li>Pharmacies</li>
-          <li>Parks</li>
-          <li>Banks</li>
-          <li>Convenience Stores</li>
-          <li>Shopping Malls</li>
-          <li>Libraries</li>
-          <li>Restaurants</li>
-          <li>Cafes</li>
-          <li>Churches</li>
-
-        </ul>
-      </div>
-    </div>
-    <script> src = getlocation.js></script>
-    <!-- this implements the navbar-->
-    <div id="navbar"></div>
-    <script type = "module" src = ../../static/navbar.js></script>
-    <!-- input tag-->
+</head>
+<body>
 
 
-    <form method="post">
-        {% csrf_token %}
-        <input id="address" type="text" name="address">
-        <input type="submit" style="display: none" />
 
-    </form>
+<form method="post">
+    {% csrf_token %}
+    <input id="address" type="text" name="address">
+    <input type="submit"/>
 
-    <input type="hidden" id="names" name="variable" value="{{ names }}">
-    <input type="hidden" id="lats" name="variable1" value="{{ lats }}">
-    <input type="hidden" id="longs" name="variable2" value="{{ longs }}">
-    <input type="hidden" id="scores" name="variable3" value="{{ scores }}">
-    <input type="hidden" id="lat" name="variable4" value="{{ lat }}">
-    <input type="hidden" id="longi" name="variable5" value="{{ longi }}">
+</form>
 
 
 
 
+<input type="hidden" id="names" name="variable" value="{{ names }}">
+<input type="hidden" id="lats" name="variable1" value="{{ lats }}">
+<input type="hidden" id="longs" name="variable2" value="{{ longs }}">
+<input type="hidden" id="scores" name="variable3" value="{{ scores }}">
+<input type="hidden" id="lat" name="variable4" value="{{ lat }}">
+<input type="hidden" id="longi" name="variable5" value="{{ longi }}">
+<input type="hidden" id="type" name="variable6" value="{{ type }}">
 
+<!-- this implements the map-->
+<div id="map"></div>
+<script src=../../static/index.js></script>
 
-
-
-
-
-    <!-- this implements the map-->
-    <div id="map"></div>
-    <script src = ../../static/index.js> </script>
-    <!-- this implements the list-->
-    <div id="list"></div>
-    <script type = "module" src = ../../static/rankedstores.js></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1K9pwhTtcTS7yidUdNRSHfTxT-0AsK8c
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABNVooTkE-yezobdd5yypsLp8StVUTZe8
 
     &callback=initMap"></script>
-    
-    
+<!-- this implements the list-->
+    <ul id="list"></ul>
+    <script type = "module" src=../../static/rankedstores.js></script>
 
-    
-  </body>
+</body>
 </html>

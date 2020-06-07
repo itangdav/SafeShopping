@@ -8,8 +8,8 @@ def getLocation(address):
         gmaps = googlemaps.Client(key=API_KEY)
         result = gmaps.geocode(address)
         location = result[0]
-        lat = location['access_points'][0]['location']['latitude']
-        long = location['access_points'][0]['location']['longitude']
+        lat = location['geometry']['location']['lat']
+        long = location['geometry']['location']['lng']
         return [lat, long]
     except:
         g = geocoder.ip('me')
